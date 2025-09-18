@@ -52,36 +52,40 @@
 
 # jab number bohat sare ho tu first number ko return karana hota he . Us me sab se best vo ye he do function bano .
 
-def func1(card, query, mid):
-    mid_number = card[mid]
-    print(f' mid number :{mid_number} , mid :{mid}')
-    if mid_number == query:
-        if mid-1 >= 0 and card[mid-1] == query:
-            return 'left'
-        else:
-            return 'found'
-    elif mid_number < query:
-        return 'right'
-    else:
-        return 'left'
+# def func1(card, query, mid):
+#     mid_number = card[mid]
+#     print(f' mid number :{mid_number} , mid :{mid}')
+#     if mid_number == query:
+#         if mid-1 >= 0 and card[mid-1] == query:
+#             return 'left'
+#         else:
+#             return 'found'
+#     elif mid_number < query:
+#         return 'right'
+#     else:
+#         return 'left'
 
 
-def func2(card, query):
-    left, right = 0, len(card)-1
-    while left <= right:
-        mid = (left+right)//2
-        result = func1(card, query, mid)
-        if result == 'found':
-            return mid
-            """ “right ko mid-1 karne se array aadha kat gaya aur right side ignore ho gayi”
-                 bilkul, isi tarah binary search step by step search space aadha karta rehta hai."""
-        elif result == 'left':
-            right = mid-1
-        elif result == 'right':
-            left = mid+1
-    return -1
+# def func2(card, query):
+#     left, right = 0, len(card)-1
+#     while left <= right:
+#         mid = (left+right)//2
+#         result = func1(card, query, mid)
+#         if result == 'found':
+#             return mid
+#             """ “right ko mid-1 karne se array aadha kat gaya aur right side ignore ho gayi”
+#                  bilkul, isi tarah binary search step by step search space aadha karta rehta hai."""
+#         elif result == 'left':
+#             right = mid-1
+#         elif result == 'right':
+#             left = mid+1
+#     return -1
 
 
-print(func2([1, 2, 2, 6, 6, 6, 6, 6, 7, 7, 8, 8, 9], 7))
+# print(func2([1, 2, 2, 6, 6, 6, 6, 6, 7, 7, 8, 8, 9], 7))
 
-print(func2([1, 2, 2, 6, 6, 6, 6, 6, 7, 8, 9], 6))
+# print(func2([1, 2, 2, 6, 6, 6, 6, 6, 7, 8, 9], 6))
+
+
+
+
