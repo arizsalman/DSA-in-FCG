@@ -87,5 +87,17 @@
 # print(func2([1, 2, 2, 6, 6, 6, 6, 6, 7, 8, 9], 6))
 
 
+# Leetcode no 278 ! 
+
+def func(n, bad):
+    left, right = 1, n
+    while left < right:
+        mid = (left+right)//2
+        if mid >= bad:
+            right = mid
+        else:
+            left = mid+1
+    return left
 
 
+print(func(5, 4))
