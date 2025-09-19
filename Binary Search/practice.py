@@ -87,17 +87,67 @@
 # print(func2([1, 2, 2, 6, 6, 6, 6, 6, 7, 8, 9], 6))
 
 
-# Leetcode no 278 ! 
+# Leetcode no 278 !
 
-def func(n, bad):
-    left, right = 1, n
+
+# def func(n, bad):
+#     left, right = 1, n
+#     while left < right:
+#         mid = (left+right)//2
+#         if mid >= bad:
+#             right = mid
+#         else:
+#             left = mid+1
+
+#     return left
+
+
+# print(func(5, 4))
+
+
+def peek(nums):
+    left, right = 0, len(nums)-1
     while left < right:
         mid = (left+right)//2
-        if mid >= bad:
+        if nums[mid] > nums[mid+1]:
             right = mid
         else:
             left = mid+1
     return left
 
 
-print(func(5, 4))
+print(peek([1, 2, 3,  5, 4]))
+
+
+peek = [1, 2.3, 5, 4]
+
+
+"""ye jo kam ho raha he ye surf Sorted array pe kam kare ga """
+
+
+def pfunc(nums, target, mid):
+    mid_nums = nums[mid]
+    if mid_nums == target:
+        return 'found'
+    elif mid_nums > target:
+        return 'left'
+    else:
+        return 'right'
+
+
+def funct(nums, target):
+    left, right = 0, len(nums)-1
+    while left <= right:
+        mid = (left + right)//2
+        result = pfunc(nums, target, mid)
+        if result == 'found':
+            return mid
+        if result == 'left':
+            right = mid-1
+        if result == 'right':
+            left = mid+1
+    return -1
+
+
+# leet code accept nahe kare ga
+print(funct([1, 2, 3, 5, 4], 3))
