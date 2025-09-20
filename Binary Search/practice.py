@@ -189,19 +189,44 @@
 """leetcode no 69 """
 
 
-def func(x):
-    if x < 2:
-        return x
-    left, right = 1, x//2
+# def func(x):
+#     if x < 2:
+#         return x
+#     left, right = 1, x//2
+#     while left <= right:
+#         mid = (left + right)//2
+#         if mid*mid == x:
+#             return mid
+#         elif mid*mid < x:
+#             left = mid+1
+#         else:
+#             right = mid-1
+#     return right
+
+
+# print(func(4))
+
+
+"""Leetcode no 367"""
+#  num = 16,14
+
+
+def func(num):
+    if num == 1:
+        return True
+    left, right = 1, num//2
     while left <= right:
-        mid = (left + right)//2
-        if mid*mid == x:
-            return mid
-        elif mid*mid < x:
+        mid = (left+right)//2
+        print(f'mid {mid}')
+        if mid*mid == num:
+            return True
+        elif mid*mid < num:
             left = mid+1
         else:
             right = mid-1
-    return right
+            print(f'right {right}')
+    print(f'right {right}')
+    return False
 
 
-print(func(4))
+print(func(16))
