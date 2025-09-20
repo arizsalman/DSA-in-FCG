@@ -181,15 +181,27 @@
 
 # x = 4
 
-def func(x):
+# Iter | left | right | mid = (left+right)//2 | mid*mid | comparison         | action
+# -----|------|-------|-----------------------|---------|--------------------|-----------------------
+#   1  |  1   |   2   |  mid = (1+2)//2 = 1  |  1      | 1 == 4 ? no        | 1 < 4 -> left = mid+1 = 2
+#   2  |  2   |   2   |  mid = (2+2)//2 = 2  |  4      | 4 == 4 ? yes       | return mid -> 2
 
-    left, right = 1, x
-    while left < right:
-        mid = (left+right)//2
-        if x[mid] < x[mid+1]:
-            return left
+"""leetcode no 69 """
+
+
+def func(x):
+    if x < 2:
+        return x
+    left, right = 1, x//2
+    while left <= right:
+        mid = (left + right)//2
+        if mid*mid == x:
+            return mid
+        elif mid*mid < x:
+            left = mid+1
         else:
-            return right
+            right = mid-1
+    return right
 
 
 print(func(4))
