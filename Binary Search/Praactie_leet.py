@@ -49,15 +49,39 @@
 # nums = [4, 5, 6, 7, 0, 1, 2], Output = 0
 
 
+# def func(nums):
+#     left, right = 0, len(nums)-1
+#     while left < right:
+#         mid = (left+right)//2
+#         if nums[mid] > nums[right]:
+#             left = mid+1
+#         else:
+#             right = mid
+#     return nums[left]
+
+
+# print(func(nums=[4, 5, 6, 7, 0, 1, 2]))
+
+"""Leetcode no 540 """
+# nums = [1,1,2,3,3,4,4,8,8] //2
+
+
 def func(nums):
     left, right = 0, len(nums)-1
     while left < right:
-        mid = (left+right)//2
-        if nums[mid] > nums[right]:
-            left = mid+1
+        mid = (left + right)//2
+
+        if mid % 2 == 0:
+            if nums[mid] == nums[mid+1]:
+                left = mid+2
+            else:
+                right = mid
         else:
-            right = mid
+            if nums[mid] == nums[mid-1]:
+                left = mid+1
+            else:
+                right = mid-1
     return nums[left]
 
 
-print(func(nums=[4, 5, 6, 7, 0, 1, 2]))
+print(func([1, 1, 2, 3, 3, 4, 4, 8, 8]))
