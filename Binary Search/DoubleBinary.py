@@ -57,21 +57,66 @@
 # [2, 4, 7, 10, 15], x = 6 7
 
 
-def funcs(arri, x):
-    left, right = 0, len(arri)-1
-    find = -1
-    while left <= right:
-        mid = (left+right)//2  # 2
-        print(f'mid {mid}')
-        if arri[mid] >= x:
-            find = arri[mid]
-            right = mid-1
-            print(f"right {right}")
-        else:
-            left = mid + 1
-            print(f'left {left}')
-    return find
+# def funcs(arri, x):
+#     left, right = 0, len(arri)-1
+#     find = -1
+#     while left <= right:
+#         mid = (left+right)//2
+#         print(f'mid {mid}')
+#         if arri[mid] >= x:
+#             find = arri[mid]
+#             right = mid-1
+#             print(f"right {right}")
+#         else:
+#             left = mid + 1
+#             print(f'left {left}')
+#     return find
 
 
-print(funcs(arri=[2, 4, 7, 10, 15], x=6))
+# print(funcs(arri=[2, 4, 7, 10, 15], x=6))
 # print(funcs(arri=[2, 4, 7, 10, 15], x=16))
+
+
+# mountainArr = [1,2,3,4,5,3,1], target = 3
+"""Leetcode no 1095"""
+
+""" ye kam tu kar raha but leetcode me us question ke requirement ye nahe the is error de raha he  """
+
+
+# def func(arr, target):
+#     left, right = 0, len(arr)-1
+#     find = -1
+#     while left <= right:
+#         mid = (left + right)//2
+#         if arr[mid] == target:
+#             return arr[mid]
+#         elif arr[mid] < target:
+#             left = mid+1
+#         else:
+#             right = mid-1
+#     return find
+
+
+# # 3
+# print(func(arr=[1, 2, 3, 4, 5, 3, 1], target=3))
+
+
+# leetcode no 658
+
+
+# arr = [1, 2, 3, 4, 5], k = 4, x = 3
+
+
+def func(arr, k, x):
+    left, right = 0, len(arr)-1
+    while left <= right:
+        mid = (left + right)//2
+        if arr[mid] < x:
+
+            left = mid+1
+        else:
+            right = mid-1
+    return k
+
+
+print(func(arr=[1, 2, 3, 4, 5], k=4, x=3))
