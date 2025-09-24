@@ -126,14 +126,62 @@
 '''Leetcode no 658'''
 
 
-def func(arr, k, x):
-    left, right = 0, len(arr)-1
-    while right - left + 1 > k:
-        if abs(arr[left]-x) > abs(arr[right]-x):
-            left += 1
+# def func(arr, k, x):
+#     left, right = 0, len(arr)-1
+#     while right - left + 1 > k:
+#         if abs(arr[left]-x) > abs(arr[right]-x):
+#             left += 1
+#         else:
+#             right -= 1
+#     return arr[left:right+1]
+
+
+# print(func(arr=[1, 2, 3, 4, 5], k=4, x=3))
+
+'''Leetcode no 704 '''
+
+# array = [-1, 0, 3, 5, 9, 12], target = 9
+
+
+def func(array, target):
+    left, right = 0, len(array)-1
+    while left <= right:
+        mid = (left + right)//2
+        if array[mid] == target:
+            return mid
+        elif array[mid] < target:
+            left = mid+1
         else:
-            right -= 1
-    return arr[left:right+1]
+            right = mid-1
+
+    return -1
 
 
-print(func(arr=[1, 2, 3, 4, 5], k=4, x=3))
+print(func(array=[-1, 0, 3, 5, 9, 12], target=9))
+print(func(array=[-1, 0, 3, 5, 9, 12], target=2))
+
+'''
+ Ye leetcode me accept he .us me get ka istemal karna he 
+# class Solution:
+#     def search(self, reader: 'ArrayReader', target: int) -> int:
+#         left, right = 0, 1
+
+#         # Step 1: Find a search bound
+#         while reader.get(right) < target:
+#             left = right
+#             right *= 2   # double the window
+
+#         # Step 2: Normal binary search
+#         while left <= right:
+#             mid = (left + right) // 2
+#             value = reader.get(mid)
+
+#             if value == target:
+#                 return mid
+#             elif value > target:
+#                 right = mid - 1
+#             else:
+#                 left = mid + 1
+
+#         return -1
+'''
