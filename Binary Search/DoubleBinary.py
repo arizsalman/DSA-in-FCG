@@ -107,16 +107,33 @@
 # arr = [1, 2, 3, 4, 5], k = 4, x = 3
 
 
+# def func(arr, k, x):
+#     left, right = 0, len(arr)-1
+#     while left <= right:
+#         mid = (left + right)//2
+#         if arr[mid] < x:
+
+#             left = mid+1
+#         else:
+#             right = mid-1
+#     return k
+
+
+# print(func(arr=[1, 2, 3, 4, 5], k=4, x=3))
+
+
+# arr = [1, 2, 3, 4, 5], k = 4, x = 3
+'''Leetcode no 658'''
+
+
 def func(arr, k, x):
     left, right = 0, len(arr)-1
-    while left <= right:
-        mid = (left + right)//2
-        if arr[mid] < x:
-
-            left = mid+1
+    while right - left + 1 > k:
+        if abs(arr[left]-x) > abs(arr[right]-x):
+            left += 1
         else:
-            right = mid-1
-    return k
+            right -= 1
+    return arr[left:right+1]
 
 
 print(func(arr=[1, 2, 3, 4, 5], k=4, x=3))
