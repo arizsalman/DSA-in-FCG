@@ -1,5 +1,5 @@
 '''Bubble Sort ek simple sorting algorithm hai jo list (array) ke elements ko ascending ya descending order me arrange karne ke liye use hota hai.'''
-
+"""Bubble Sort ki time complexity O(n²) hai."""
 # INNER & OUTER LOOP
 """Ek analogy 🧩
 
@@ -18,11 +18,12 @@ Manager khud box ko touch nahi karta — sirf worker ko kaam repeat karwata hai.
 """ Importance Point 
 Tumhari baat:
 last 9, se phele 1 he → outer loop ne pehla round me 9 ko end me fix kar diya, ab baki [8,6,5,3,2,1] me again repeat karega.
-agar last me value  bajte tu update kar outer ab sahe he tu repeat karo bus 
+agar last me value  bajte tu update kar outer ab sahe he tu repeat karo bus             
 """
 
 
 def func(nums):
+    nums = list(nums)
     for j in range(len(nums)-1):  # outer loop
         print(f'j{j+1} start {nums}')
         for i in range(len(nums)-1):  # inner loop
