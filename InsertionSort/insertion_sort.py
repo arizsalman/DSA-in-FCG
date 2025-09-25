@@ -14,8 +14,8 @@ def func(nums):
         j = i-1
         while j >= 0 and nums[j] > key:
             nums[j+1] = nums[j]
-            j -=1
-            nums[j+1] = key 
+            j -= 1
+            nums[j+1] = key
     return nums
 
 
@@ -59,3 +59,23 @@ print(func([9, 8, 6, 5, 3, 2, 1]))
 
 
 # print("Final sorted array:", func([9, 8, 6, 5, 3, 2, 1]))
+
+
+# nums = [9, 8, 6, 5, 3, 2, 1]
+# for _ in range(len(nums)-1):
+#     for i in range(len(nums)-1):
+#         if nums[i] > nums[i+1]:
+#             nums[i], nums[i+1] = nums[i+1], nums[i]
+# print(nums)
+
+
+num = [9, 8, 6, 5, 3, 2, 1]
+
+for i in range(len(num)):
+    key = num[i]
+    j = i-1
+    while j >= 0 and num[j] > key:
+        num[j+1] = num[j]
+        j -= 1
+        num[j+1] = key
+print(f' Its nums{num}')
