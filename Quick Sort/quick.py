@@ -25,43 +25,13 @@ def partition(nums, start=0, end=None):
     if end is None:
         end = len(nums)-1
     left, right = start, end-1
+    # Pivot_value = nums[end] # yar jo last element jo he vo pivot he  jabhe humne yaha  right=end-1 de because pivot end he
     while right > left:
         if nums[left] <= nums[end]:
+            print(f'left is {left} ')
             left += 1
         elif nums[right] > nums[end]:
-            right -= 1
-        else:
-            nums[left], nums[right] = nums[right], nums[left]
-    if nums[left] > nums[end]:
-        nums[left], nums[end] = nums[end], nums[left]
-        return left
-    else:
-        return end
-
-
-print(func([4, 2, 6, 3, 4, 6, 2, 1]))
-
-
-def func(nums, start=0, end=None):
-    if end is None:
-        # ye copy nahe hu ke ab or agar modify karho tu list me array nahe de
-        nums = list(nums)
-        end = len(nums)-1
-    if start < end:
-        pivot = partition(nums, start, end)
-        func(nums, start, pivot-1)  # yaha array ke copy nahe hu rahe
-        func(nums, pivot+1, end)
-    return nums
-
-
-def partition(nums, start=0, end=None):
-    if end is None:
-        end = len(nums)-1
-    left, right = start, end-1
-    while right > left:
-        if nums[left] <= nums[end]:
-            left += 1
-        elif nums[right] > nums[end]:
+            print(f' right {right}')
             right -= 1
         else:
             nums[left], nums[right] = nums[right], nums[left]
