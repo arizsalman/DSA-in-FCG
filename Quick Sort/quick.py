@@ -17,7 +17,7 @@ def func(nums, start=0, end=None):
     if start < end:
         pivot = partition(nums, start, end)
         func(nums, start, pivot-1)  # yaha array ke copy nahe hu rahe
-        func(nums, pivot+1, end)
+        func(nums, pivot, end)
     return nums
 
 
@@ -28,10 +28,10 @@ def partition(nums, start=0, end=None):
     # Pivot_value = nums[end] # yar jo last element jo he vo pivot he  jabhe humne yaha  right=end-1 de because pivot end he
     while right > left:
         if nums[left] <= nums[end]:
-            print(f'left is {left} ')
+            # print(f'left is {left} ')
             left += 1
         elif nums[right] > nums[end]:
-            print(f' right {right}')
+            # print(f' right {right}')
             right -= 1
         else:
             nums[left], nums[right] = nums[right], nums[left]
@@ -43,3 +43,42 @@ def partition(nums, start=0, end=None):
 
 
 print(func([4, 2, 6, 3, 4, 6, 2, 1]))
+
+
+# nums = [5, 2, 3, 1]
+
+
+def fcun(nums, start=0, end=None):
+    if end is None:
+        end = len(nums)-1
+    if start < end:
+        pviot = partitions(nums, start, end)
+        fcun(nums, start, pviot-1)
+        fcun(nums, pviot+1, end)
+    return nums
+
+
+def partitions(nums, start=0, end=None):
+    if end is None:
+        end = len(nums)-1
+    left, right = start, end-1
+    while right < left:
+        if nums[left] <= nums[end]:
+            left += 1
+        elif nums[right] > nums[end]:
+            right -= 1
+        else:
+            nums[left], nums[right] = nums[right], nums[left]
+    if nums[left] > nums[end]:
+        nums[left], nums[end] = nums[end], nums[left]
+        return left
+    else:
+        return end
+
+
+print(fcun([5, 2, 3, 1]))
+
+
+ll = [5, 2, 3, 1]
+pviot = partitions(ll)
+print(ll, pviot)
