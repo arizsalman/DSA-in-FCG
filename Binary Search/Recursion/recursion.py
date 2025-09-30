@@ -1,0 +1,29 @@
+"""Recursion :
+  Recursion ek function ka khud ko call karna hota hai, jab tak ek base case na mil jaye.
+Har recursive call problem ko thoda chhota banata hai, aur end me sab calls mil kar final answer dete hain.
+"""
+
+
+"""recursion kese kaam karta hai?
+
+Recursion ka logic ye hai:
+
+Function ek badi problem ko leke usko tod deta hai chhoti problem me.
+
+Fir khud ko call karta hai taake chhoti problem solve ho jaye.
+
+Jab base case milta hai, waha se solution wapas upar build hota hai."""
+
+
+def func(seq1, seq2, ind1=0, ind2=0):
+    if ind1 == len(seq1) or ind2 == len(seq2):
+        return 0
+    elif seq1[ind1] == seq2[ind2]:
+        return 1+func(seq1, seq2, ind1+1, ind2+1)
+    else:
+        return max(func(seq1, seq2, ind1+1, ind2),
+                   func(seq1, seq2, ind1, ind2+1)
+                   )
+
+
+print(func(seq1="serendipition", seq2="precipitation"))
