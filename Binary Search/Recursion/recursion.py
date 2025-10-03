@@ -67,39 +67,44 @@ Jab base case milta hai, waha se solution wapas upar build hota hai."""
 """Dynamic Programming Solution """
 
 
-def get_helper(matrix, idex1, idex2):
-    if idex1 < 0 or idex2 < 0:
-        return 0
-    else:
-        return matrix[idex1][idex2]
+# def get_helper(matrix, idex1, idex2):
+#     if idex1 < 0 or idex2 < 0:
+#         return 0
+#     else:
+#         return matrix[idex1][idex2]
 
 
-def func_d(seq1, seq2):
-    """[[0 for _ in range(i2)] for _ in range(i1)]
-iska matlab hota hai:
+# def func_d(seq1, seq2):
+#     """[[0 for _ in range(i2)] for _ in range(i1)]
+# iska matlab hota hai:
 
-Bahar wala loop (for _ in range(i1)): ye rows banata hai. Matlab total i1 rows hongi.
+# Bahar wala loop (for _ in range(i1)): ye rows banata hai. Matlab total i1 rows hongi.
 
-Andar wala loop (for _ in range(i2)): ye har row ke andar i2 elements (columns) banata hai."""
+# Andar wala loop (for _ in range(i2)): ye har row ke andar i2 elements (columns) banata hai."""
 
-    """ 🔑 Rule yaad rakho:
+#     """ 🔑 Rule yaad rakho:
 
-Sabse pehle ek row banani hoti hai (andar wala loop)
+# Sabse pehle ek row banani hoti hai (andar wala loop)
 
-Fir un rows ko ek matrix banane ke liye repeat karna hota hai (bahar wala loop)"""
-    i1, i2 = len(seq1), len(seq2)
-    results = [[0 for _ in range(i2)] for _ in range(i1)]
-    for idex1 in range(i1):
-        for idex2 in range(i2):
-            if seq1[idex1] == seq2[idex2]:
-                results[idex1][idex2] = 1+get_helper(results, idex1-1, idex2-1)
-            else:
-                results[idex1][idex2] = max(get_helper(results, idex1-1, idex2),
-                                            get_helper(results, idex1, idex2-1))
+# Fir un rows ko ek matrix banane ke liye repeat karna hota hai (bahar wala loop)"""
+# i1, i2 = len(seq1), len(seq2)
+# results = [[0 for _ in range(i2)] for _ in range(i1)]
+# """👉 Matlab outer loop bina inner loop ke kuch produce nahi karega, kyunki uska kaam hai sirf row create karna. Inner loop hi us row ke andar 0 bhar deta hai.
+# 👉 Matlab:
+# Outer = sirf row ka container banata hai
+# Inner = us row ke andar 0 bhar deta hai
+# """
+#     for idex1 in range(i1):
+#         for idex2 in range(i2):
+#             if seq1[idex1] == seq2[idex2]:
+#                 results[idex1][idex2] = 1+get_helper(results, idex1-1, idex2-1)
+#             else:
+#                 results[idex1][idex2] = max(get_helper(results, idex1-1, idex2),
+#                                             get_helper(results, idex1, idex2-1))
 
-    return results[-1][-1] if i1 > 0 and i2 > 0 else 0
+#     return results[-1][-1] if i1 > 0 and i2 > 0 else 0
+# print(func_d(seq1="serendipition", seq2="precipitation"))
+# print(func_d(seq1="abcde", seq2="m"))
+# print(func_d(seq1="abcde", seq2=""))
 
 
-print(func_d(seq1="serendipition", seq2="precipitation"))
-print(func_d(seq1="abcde", seq2="m"))
-print(func_d(seq1="abcde", seq2=""))
