@@ -108,3 +108,28 @@ Jab base case milta hai, waha se solution wapas upar build hota hai."""
 # print(func_d(seq1="abcde", seq2=""))
 
 
+def help(matrix, ind1, ind2):
+    if ind1 < 0 or ind2 < 0:
+        return 0
+    else:
+        return matrix[ind1][ind2]
+
+
+def func(seq1, seq2):
+    i1, i2 = len(seq1), len(seq2)
+    result = [[0 for _ in range(i2)]for _ in range(i1)]
+
+    for i in range(i1):
+        for j in range(i2):
+            if seq1[i] == seq2[j]:
+                result[i][j] = 1 + help(result, i-1, j-1)
+            else:
+                result[i][j] = max(help(result, i-1, j),
+                                   help(result, i, j-1))
+
+    return result[-1][-1] if i1 > 0 and i2 > 0 else 0
+
+
+print(func(seq1="serendipition", seq2="precipitation"))
+print(func(seq1="abcde", seq2="m"))
+print(func(seq1="abcde", seq2=""))
