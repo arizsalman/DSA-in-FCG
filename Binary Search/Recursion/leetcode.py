@@ -22,3 +22,17 @@ def funct(word1, word2):
 
 """This Answer is Wrong """
 print(funct(word1="horse", word2="ros"))
+
+
+def longestSubsequence(nums):
+    length = len(nums)
+    if nums.count(0) == length:
+        return 0
+
+    if nums != 0:
+        return length
+    else:
+        return length
+
+
+print(longestSubsequence([1, 2, 3]))
