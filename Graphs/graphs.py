@@ -52,7 +52,11 @@ class Graph:
     def __repr__(self):
         result = ""
         for i, j in enumerate(self. data):
-            result += f" {i}:{j}\n"
+            result += f" {i}:{j}\n"  # is me pura age ga += ke wajah se
+            # result = f" {i}:{j}\n" # is me sirf ye ae ga  4:[1, 3, 0]  pur nahe .
+            """to har iteration me result overwrite ho jaata —
+               sirf last line bachi rehti.
+               Isliye += use karte hain, taki har line append (add) hoti jaaye."""
         return result
 
 
