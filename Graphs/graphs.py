@@ -1,6 +1,19 @@
 '''Graph ek data structure hai jo objects (nodes/vertices) ke beech ke relationships (edges) ko represent karta hai.'''
 '''Graphs har jagah use hote hain — jab bhi relationships ya connections represent karne ho.'''
 
+'''🔹 Important point:
+
+Graph connection-based structure hai, sequence-based nahi.
+
+List [1, 4] aur [4, 1] dono same connection represent karte hain.
+
+Matlab agar graph ka code ya edge order badal jaye, to print order alag ho sakta hai —
+lekin connections same rehte hain.
+
+Isiliye agar koi graph “dusre tarike se likhe” (jaise edges ka order badal de ya printing format badal de),
+to structure same rehta hai, bas presentation different lagti hai'''
+
+
 """| Area                      | Use of 
 | 🌍 **Maps & Navigation**   | Cities (nodes) aur roads (edges). GPS routes find karne me use hota hai (e.g., Google Maps).       |
 
