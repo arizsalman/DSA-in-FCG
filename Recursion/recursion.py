@@ -133,3 +133,18 @@ def func(seq1, seq2):
 print(func(seq1="serendipition", seq2="precipitation"))
 print(func(seq1="abcde", seq2="m"))
 print(func(seq1="abcde", seq2=""))
+
+
+def productExceptSelf(nums):
+    n = len(nums)
+    ans = [1]*n
+    for i in range(1, n):
+        ans[i] = ans[i-1]*nums[i-1]
+    suffix = 1
+    for i in range(n-1, -1, -1):
+        ans[i] = ans[i]*suffix
+        suffix = suffix*nums[i]
+    return ans
+
+
+print(productExceptSelf(nums=[1, 2, 3, 4]))
