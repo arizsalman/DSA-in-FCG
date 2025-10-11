@@ -140,37 +140,46 @@ graphs = GraphList(5, edges)
 print(graphs.bfs(0))
 
 
+# Step 1: Define the GraphList class
+class GraphList:
+    def __init__(self, n_vertices, edges):
+        # adjacency list (empty lists for each vertex)
+        self.data = [[] for _ in range(n_vertices)]
 
+        # add edges (undirected graph)
+        for u, v in edges:
+            self.data[u].append(v)
+            self.data[v].append(u)
+
+
+# Step 2: Define the BFS function
 def bfs(graphs, source):
     visited = [False] * len(graphs.data)
-    distance = [0] * len(graphs.data)   # har vertex ka distance 0 se start
-    distance[source] = 0
+    distance = [0] * len(graphs.data)   # distance from source
     queue = [source]
+
     visited[source] = True
+    distance[source] = 0
     i = 0
 
     while i < len(queue):
         current = queue[i]
+
+        # explore neighbors of current node
         for v in graphs.data[current]:
             if not visited[v]:
                 queue.append(v)
                 visited[v] = True
-                # yahan hum distance update karte hain
                 distance[v] = distance[current] + 1
         i += 1
 
     return queue, distance
 
 
-class GraphList:
-    def __init__(self, n_vertices, edges):
-        self.data = [[] for _ in range(n_vertices)]
-        for u, v in edges:
-            self.data[u].append(v)
-            self.data[v].append(u)
-
-
+# Step 3: Create the graph and call BFS
 edges = [(0, 1), (0, 2), (1, 3), (2, 4)]
 graphs = GraphList(5, edges)
 
-print(bfs(graphs, 0))
+result = bfs(graphs, 0)
+print("BFS Traversal:", result[0])
+print("Distance from source:", result[1])
