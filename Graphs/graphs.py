@@ -55,27 +55,27 @@ Ek 2D array jisme 1 dikhata hai ke connection hai aur 0 dikhata hai ke nahi."""
 # print(n, m)
 
 
-class Graph:
-    def __init__(self, n_vertices, edges):
-        self.data = [[]for _ in range(n_vertices)]
-        for v1, v2 in edges:
-            self.data[v1].append(v2)
-            self.data[v2].append(v1)
+# class Graph:
+#     def __init__(self, n_vertices, edges):
+#         self.data = [[]for _ in range(n_vertices)]
+#         for v1, v2 in edges:
+#             self.data[v1].append(v2)
+#             self.data[v2].append(v1)
 
-    def __repr__(self):
-        result = ""
-        for i, j in enumerate(self. data):
-            result += f" {i}:{j}\n"  # is me pura age ga += ke wajah se
-            # result = f" {i}:{j}\n" # is me sirf ye ae ga  4:[1, 3, 0]  pur nahe .
-            """to har iteration me result overwrite ho jaata —
-               sirf last line bachi rehti.
-               Isliye += use karte hain, taki har line append (add) hoti jaaye."""
-        return result
+#     def __repr__(self):
+#         result = ""
+#         for i, j in enumerate(self. data):
+#             result += f" {i}:{j}\n"  # is me pura age ga += ke wajah se
+#             # result = f" {i}:{j}\n" # is me sirf ye ae ga  4:[1, 3, 0]  pur nahe .
+#             """to har iteration me result overwrite ho jaata —
+#                sirf last line bachi rehti.
+#                Isliye += use karte hain, taki har line append (add) hoti jaaye."""
+#         return result
 
 
-graphs = Graph(5, [(0, 1), (1, 2), (1, 3), (1, 4), (2, 3), (3, 4), (4, 0)])
+# graphs = Graph(5, [(0, 1), (1, 2), (1, 3), (1, 4), (2, 3), (3, 4), (4, 0)])
 
-print(graphs)
+# print(graphs)
 
 
 # class GraphMatrix:
@@ -97,89 +97,140 @@ print(graphs)
 
 # edges = [(0, 1), (0, 2), (1, 2), (2, 3)]
 # g = GraphMatrix(4, edges)
-class GraphList:
-    def __init__(self, n_vertices, edges):
-        self.data = [[0] for _ in range(n_vertices)]
-        print(f'fs{self.data}')
-        for u, v in edges:
-            self.data[u].append(v)
-            self.data[v].append(u)
-            print(f'sf{self.data}')
+# class GraphList:
+#     def __init__(self, n_vertices, edges):
+#         self.data = [[0] for _ in range(n_vertices)]
+#         print(f'fs{self.data}')
+#         for u, v in edges:
+#             self.data[u].append(v)
+#             self.data[v].append(u)
+#             print(f'sf{self.data}')
 
-    def bfs(graphs, source):
-        visited = [False] * len(graphs.data)
-        queue = [source]
-        visited[source] = True
-        i = 0
-        while i < len(queue):
-            current = queue[i]
-            for v in graphs.data[current]:
-                distance = 0
-                if not visited[v]:
-                    queue.append(v)
-                    visited[v] = True
+#     def bfs(graphs, source):
+#         visited = [False] * len(graphs.data)
+#         queue = [source]
+#         visited[source] = True
+#         i = 0
+#         while i < len(queue):
+#             current = queue[i]
+#             for v in graphs.data[current]:
+#                 distance = 0
+#                 if not visited[v]:
+#                     queue.append(v)
+#                     visited[v] = True
 
-            i += 1
-        return queue
+#             i += 1
+#         return queue
 
 
-'''🔹 Tera sawal ka short answer:
+# '''🔹 Tera sawal ka short answer:
 
-matlab ke graphs = 4 or us 4 ke jo connection bane ke vo data ho ke?
+# matlab ke graphs = 4 or us 4 ke jo connection bane ke vo data ho ke?
 
-✅ Bilkul haan (yes)
-Lekin technically graphs ek object hai jisme:
+# ✅ Bilkul haan (yes)
+# Lekin technically graphs ek object hai jisme:
 
-4 vertices hain
+# 4 vertices hain
 
-aur unke connections graphs.data ke andar store hain'''
-'''“Source node” = “Starting point” = “The first node from which BFS begins.”'''
-edges = [(0, 1), (0, 2), (1, 3), (2, 4)]
-graphs = GraphList(5, edges)
+# aur unke connections graphs.data ke andar store hain'''
+# '''“Source node” = “Starting point” = “The first node from which BFS begins.”'''
+# edges = [(0, 1), (0, 2), (1, 3), (2, 4)]
+# graphs = GraphList(5, edges)
 
-print(graphs.bfs(0))
+# print(graphs.bfs(0))
 
 
 # Step 1: Define the GraphList class
-class GraphList:
-    def __init__(self, n_vertices, edges):
-        # adjacency list (empty lists for each vertex)
-        self.data = [[] for _ in range(n_vertices)]
+# class GraphList:
+#     def __init__(self, n_vertices, edges):
+#         # adjacency list (empty lists for each vertex)
+#         self.data = [[] for _ in range(n_vertices)]
 
-        # add edges (undirected graph)
+#         # add edges (undirected graph)
+#         for u, v in edges:
+#             self.data[u].append(v)
+#             self.data[v].append(u)
+
+
+# # Step 2: Define the BFS function
+# def bfs(graphs, source):
+#     visited = [False] * len(graphs.data)
+#     distance = [0] * len(graphs.data)   # distance from source
+#     queue = [source]
+
+#     visited[source] = True
+#     distance[source] = 0
+#     i = 0
+
+#     while i < len(queue):
+#         current = queue[i]
+
+#         # explore neighbors of current node
+#         for v in graphs.data[current]:
+#             if not visited[v]:
+#                 queue.append(v)
+#                 visited[v] = True
+#                 distance[v] = distance[current] + 1
+#         i += 1
+
+#     return queue, distance
+
+
+# # Step 3: Create the graph and call BFS
+# edges = [(0, 1), (0, 2), (1, 3), (2, 4)]
+# graphs = GraphList(5, edges)
+
+# result = bfs(graphs, 0)
+# print("BFS Traversal:", result[0])
+# print("Distance from source:", result[1])
+
+
+class GarphsList:
+    def __init__(self, n_vertices, edges):
+        self.data = [[] for _ in range(n_vertices)]
         for u, v in edges:
+            print("u =", u, "v =", v)
             self.data[u].append(v)
             self.data[v].append(u)
 
+    def bfs_sorted(graphs, source, target):
+        visited = [False]*len(graphs.data)
+        direction = [0]*len(graphs.data)
+        parent = [-1]*len(graphs.data)
+        queue = [source]
 
-# Step 2: Define the BFS function
-def bfs(graphs, source):
-    visited = [False] * len(graphs.data)
-    distance = [0] * len(graphs.data)   # distance from source
-    queue = [source]
+        visited[source] = True
+        direction[source] = 0
 
-    visited[source] = True
-    distance[source] = 0
-    i = 0
+        i = 0
+        while i < len(queue):
+            current = queue[i]
 
-    while i < len(queue):
-        current = queue[i]
+            for v in graphs.data[current]:
+                if not visited[v]:
+                    queue.append(v)
+                    visited[v] = True
+                    direction[v] = direction[current]+1
+                    parent[v] = current
+            i += 1
+        if not visited[target]:
+            return None, None
+        path = []
+        node = target
+        while node != -1:
+            path.append(node)
+            node = parent[node]
+        path.reverse()
 
-        # explore neighbors of current node
-        for v in graphs.data[current]:
-            if not visited[v]:
-                queue.append(v)
-                visited[v] = True
-                distance[v] = distance[current] + 1
-        i += 1
-
-    return queue, distance
+        return path, direction[target]
 
 
-# Step 3: Create the graph and call BFS
-edges = [(0, 1), (0, 2), (1, 3), (2, 4)]
-graphs = GraphList(5, edges)
+edges = [(0, 1), (0, 2), (1, 3), (2, 4), (3, 4)]
+graphs = GarphsList(5, edges)
 
-result = bfs(graphs, 0)
-print("BFS Traversal:", result[0])
-print("Distance from source:", result[1])
+path, dist = graphs.bfs_sorted(0, 4)
+if path:
+    print("Shortest Path from 0 to 4:", path)
+    print("Distance:", dist)
+else:
+    print("No path foud")
