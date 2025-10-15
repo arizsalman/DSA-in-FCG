@@ -52,24 +52,34 @@ print(isAnagram(s="rat", t="car"))  # yaha third equation called hu rahe he
 # print(func([1, 2, 3, 4, 5]))
 
 
-def fun(head):
-    per = None
-    curr = head
+# def fun(head):
+#     per = None
+#     curr = head
 
-    while curr:
-        temp = curr.next
-        curr.next = per
-        """temp = curr.next → aage ka pointer save karta hai.
-curr.next = per → peeche ka pointer set karta hai (link reverse karta hai)."""
-        per = curr
-        curr = temp
-    return per
+#     while curr:
+#         temp = curr.next
+#         curr.next = per
+#         """temp = curr.next → aage ka pointer save karta hai.
+# curr.next = per → peeche ka pointer set karta hai (link reverse karta hai)."""
+#         per = curr
+#         curr = temp
+#     return per
 
 
-"""Pehle next se aage ki value dekh rahe hain,
+# """Pehle next se aage ki value dekh rahe hain,
 
-Phir us node ka next pointer peeche (previous) ki taraf kar rahe hain.
+# Phir us node ka next pointer peeche (previous) ki taraf kar rahe hain.
 
-Exactly yehi hai linked list reversal ka concept."""
+# Exactly yehi hai linked list reversal ka concept."""
 
-print(fun([1, 2, 3, 4, 5]))
+# print(fun([1, 2, 3, 4, 5]))
+
+
+def func(n):
+
+    if n == 0:
+        return 1
+    return n * func(n-1)
+
+
+print(func(2))
