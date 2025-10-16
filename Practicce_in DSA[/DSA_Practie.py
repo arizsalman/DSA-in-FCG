@@ -75,11 +75,31 @@ print(isAnagram(s="rat", t="car"))  # yaha third equation called hu rahe he
 # print(fun([1, 2, 3, 4, 5]))
 
 
-def func(n):
+# def func(n):
 
-    if n == 0:
-        return 1
-    return n * func(n-1)
+#     if n == 0:
+#         return 1
+#     return n * func(n-1)
 
 
-print(func(2))
+# print(func(2))
+
+def removeNthFromEnd(self, head):
+    slow = head
+    fast = head
+
+    for _ in range(n):
+        fast = fast.next
+
+    if fast == None:
+        return head.next
+
+    while fast. next:
+        slow = slow.next
+        fast = fast.next
+
+    slow.next = slow.next.next
+    return head
+
+
+print(removeNthFromEnd(1, 2, 3, 4)2)
