@@ -84,22 +84,40 @@ print(isAnagram(s="rat", t="car"))  # yaha third equation called hu rahe he
 
 # print(func(2))
 
-def removeNthFromEnd(self, head):
-    slow = head
-    fast = head
+# def removeNthFromEnd(self, head):
+#     slow = head
+#     fast = head
 
-    for _ in range(n):
-        fast = fast.next
+#     for _ in range(n):
+#         fast = fast.next
 
-    if fast == None:
-        return head.next
+#     if fast == None:
+#         return head.next
 
-    while fast. next:
-        slow = slow.next
-        fast = fast.next
+#     while fast. next:
+#         slow = slow.next
+#         fast = fast.next
 
-    slow.next = slow.next.next
-    return head
+#     slow.next = slow.next.next
+#     return head
 
 
-print(removeNthFromEnd(1, 2, 3, 4)2)
+# print(removeNthFromEnd(1, 2, 3, 4)2)
+
+
+# Leetcode no 278 !
+
+
+def func(n, bad):
+    left, right = 1, n
+    while left < right:
+        mid = (left+right)//2
+        if mid >= bad:
+            right = mid
+        else:
+            left = mid+1
+
+    return left
+
+
+print(func(5, 4))
